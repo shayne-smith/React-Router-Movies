@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useParams, useHistory, useRouteMatch } from 'react-router-dom';
 import axios from 'axios';
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
+
+  const { id } = useParams();
+
+  const history = useHistory();
+
+  const { path, url } = useRouteMatch();
+
   useEffect(() => {
     const getMovies = () => {
       axios
@@ -21,7 +29,7 @@ const MovieList = props => {
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+        <Link to={`/movies/${movie.id}`}><MovieDetails key={movie.id} movie={movie} /></Link>
       ))}
     </div>
   );
