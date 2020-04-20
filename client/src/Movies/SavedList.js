@@ -9,7 +9,7 @@ const SavedList = props => (
       <span className="saved-movie">{movie.title}</span>
     ))}
     
-    <Route path="/"><Link to='/'><div className="home-button">Home</div></Link></Route>
+    <Link to='/' className='home-button'>Home</Link>
   </div>
 );
 
